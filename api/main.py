@@ -1,6 +1,6 @@
 
 import os
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Query
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from imei_api.imei_check_api import check_api
@@ -22,7 +22,7 @@ def verify_token(token: str):
 
 
 @app.post("/api/check-imei")
-async def check_imei(request: IMEIRequest):
-    verify_token(request.token)
-    response = check_api(request.imei)
+async def check_imei(imei: str = Query(..., description="The IMEI to check"), token: str = Query(..., description="API token")):
+    verify_token(token)
+    response = check_api(imei)
     return response
