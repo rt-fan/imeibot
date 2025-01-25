@@ -6,7 +6,6 @@ from dotenv import load_dotenv
 from imei_api.imei_check_api import check_api
 
 load_dotenv()
-# Получаем токен из переменных окружения
 API_TOKEN = os.getenv('API_TOKEN')
 
 app = FastAPI()

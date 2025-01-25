@@ -4,7 +4,6 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from aiogram.types import Message
 from dotenv import load_dotenv
-# from imei_check_api import is_valid_imei, check_api
 from imei_api.imei_check_api import is_valid_imei, check_api
 
 load_dotenv()
