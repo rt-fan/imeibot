@@ -21,6 +21,15 @@ def verify_token(token: str):
         raise HTTPException(status_code=401, detail="Unauthorized")
 
 
+@app.get("/")
+async def main_page():
+    response = {
+        "IMEI API": "/api/check-imei",
+        "Telegram Bot": "@imei_api_2401_bot - Для доступа к IMEI API через телеграм, нужно занести ваш телеграм id в белый список"
+    }
+    return response
+
+
 @app.post("/api/check-imei")
 async def check_imei(imei: str = Query(..., description="The IMEI to check"), token: str = Query(..., description="API token")):
     verify_token(token)
