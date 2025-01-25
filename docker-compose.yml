@@ -1,6 +1,8 @@
 services:
   api:
-    build: ./api
+    build:
+      context: .
+      dockerfile: ./api/Dockerfile
     container_name: api_service
     ports:
       - "8000:8000"
@@ -9,7 +11,9 @@ services:
     restart: always
 
   bot:
-    build: ./bot
+    build:
+      context: .
+      dockerfile: ./bot/Dockerfile
     container_name: bot_service
     env_file:
       - .env
